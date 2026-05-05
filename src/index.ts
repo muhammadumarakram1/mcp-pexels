@@ -177,7 +177,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           ...(input.min_duration !== undefined ? { min_duration: String(input.min_duration) } : {}),
           ...(input.max_duration !== undefined ? { max_duration: String(input.max_duration) } : {}),
         });
-        const data = await pexelsFetch(`/videos/search?${params}`) as Record<string, unknown>;
+        const data = await pexelsFetch(`/v1/videos/search?${params}`) as Record<string, unknown>;
         const videos = (data.videos as Array<Record<string, unknown>>).map(formatVideo);
         return {
           content: [{
